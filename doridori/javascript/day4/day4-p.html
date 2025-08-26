@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <div class="wrap" id="ARRAY2P">
+        <div class="container">
+            <h1>📦 상품 관리 시스템</h1>
+            
+            <!-- 즐겨찾기 통계 -->
+            <div class="stats-section">
+                <span style="font-size: 16px; color: #2c3e50;">
+                    ❤️ 즐겨찾기: <strong id="favoriteCount">0</strong>개 |
+                    📦 전체 상품: <strong>8</strong>개
+                </span>
+            </div>
+            
+            <!-- 검색 및 정렬 섹션 -->
+            <div class="search-section">
+                <div class="search-row">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="상품명 또는 카테고리 검색..." 
+                        style="flex: 1; min-width: 200px; padding: 12px; border: 2px solid #ddd; border-radius: 8px;"
+                        oninput="searchProducts()"
+                    >
+                    <select 
+                        id="sortSelect" 
+                        onchange="sortProducts()"
+                        style="padding: 12px; border: 2px solid #ddd; border-radius: 8px;"
+                    >
+                        <option value="">정렬 선택</option>
+                        <option value="name-asc">이름순 (ㄱ-ㅎ)</option>
+                        <option value="name-desc">이름순 (ㅎ-ㄱ)</option>
+                        <option value="price-asc">가격순 (낮은→높은)</option>
+                        <option value="price-desc">가격순 (높은→낮은)</option>
+                        <option value="stock-asc">재고순 (적은→많은)</option>
+                        <option value="stock-desc">재고순 (많은→적은)</option>
+                    </select>
+                </div>
+                
+                <div class="search-row">
+                    <label>페이지당 상품 수:</label>
+                    <select id="itemsPerPageSelect" onchange="changeItemsPerPage()">
+                        <option value="4" selected>4개</option>
+                        <option value="6">6개</option>
+                        <option value="8">8개</option>
+                        <option value="12">12개</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- 필터 컨트롤들 -->
+            <div class="controls">
+                <button onclick="showAllProducts()">전체 상품</button>
+                <button onclick="showInStock()">재고 있는 상품</button>
+                <button onclick="showOnSale()">할인 상품</button>
+                <button onclick="showFavoriteProducts()" style="background: #e74c3c;">❤️ 즐겨찾기</button>
+                
+                <select id="categoryFilter" onchange="filterByCategory()">
+                    <option value="">카테고리 선택</option>
+                    <option value="전자제품">전자제품</option>
+                    <option value="의류">의류</option>
+                    <option value="도서">도서</option>
+                    <option value="가구">가구</option>
+                </select>
+                
+                <input type="number" id="maxPrice" placeholder="최대 가격" onchange="filterByPrice()">
+                
+                <button onclick="applyAllFilters()" style="background: #9b59b6;">복합 필터 적용</button>
+                <button onclick="resetFilters()" style="background: #95a5a6;">필터 초기화</button>
+                <button onclick="clearAllFavorites()" style="background: #e67e22;">즐겨찾기 전체 삭제</button>
+            </div>
+            
+            <!-- 상품 개수 정보 -->
+            <div id="productCount"></div>
+            
+            <!-- 상품 표시 영역 -->
+            <div class="product-grid" id="productGrid">
+                <p>여기에 상품들이 표시됩니다...</p>
+            </div>
+            
+            <!-- 페이지네이션 컨트롤 -->
+            <div id="pagination"></div>
+        </div>
+    
+    </div>
+</body>
+<script src="../js/day4/day4_array2_p.js"></script>
+</html>
