@@ -1,0 +1,8 @@
+* { margin:0; padding:0; }
+ul, li, ol, dl, dt, dd { list-style:none; }
+header { height:64px; border-bottom:1px solid #888; padding:16px; }
+nav { position:absolute; left:0; background-color:#ddd; padding:16px; width:160px; height:calc(100vh - 64px); }
+main { padding:16px; margin-left:192px; width:calc(100vw - 160px); height:calc(100vh - 64px); }
+article { display:inline-block; margin:10px; padding:10px 15px; border:1px solid rgb(160, 68, 14); border-radius:10px; background:#fff; text-align:center; }
+.subtitle { font-weight:400; font-size:14px; }
+.title { font-weight:700; font-size:18px; }

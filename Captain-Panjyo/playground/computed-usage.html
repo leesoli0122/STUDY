@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>computed usage</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <style>
+        .warning { color:#f00; }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- <p v-bind:class="cname">Hello</p> -->
+        <p v-bind:class="errorTextColor">Hello</p>
+    </div>
+
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    isError: false
+                }
+            },
+            computed: {
+                errorTextColor: function() {
+                    /*
+                        삼항 연산자 return isError ? 'warning' : null; 이것을 풀면
+
+                        if(isError){
+                            return 'warning'
+                        }else {
+                            return null
+                        }
+                        이라고 쓸 수 있다.
+
+                        만약 isError가 true이면 warning, 아니면 null 값
+                    */
+                    return this.isError ? 'warning' : null;
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

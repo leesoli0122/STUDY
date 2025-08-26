@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        h2:before { content:"♣"; display:inline-block; margin-right:10px; width:auto; height:100%; }
+        button,input { display:block; background:transparent; border:none; }
+        button { padding:5px; border:1px solid #ccc; border-radius:8px; cursor:pointer; }
+        button:disabled { border:1px solid #757575; background: #f8f8f8;; color:#757575; cursor:inherit; }
+        input { padding:5px; border:1px solid #ccc; border-radius:4px; }
+        p { padding:0; margin:0; }
+        .text { display:inline-block; margin:10px 0 20px; }
+        li { font-size:16px; color:#666; }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <section>
+            <h2>v-on 사용</h2>
+            <button type="button" v-on:click="addCounter">counter : {{counter}}</button>
+            <p class="text">숫자: {{counter}}</p>
+            <button type="button" v-on:click="check">확인</button>
+            <span class="text"> 알럿</span>
+            <button type="button" v-on:click="reverseMessage">텍스트 거꾸로 쓰기</button>
+            <p class="text">{{reversText}}</p>
+        </section>
+        <section>
+            <h2>v-bind 사용</h2>
+            <input type="text" v-bind:placeholder="message">
+        </section>
+        <section>
+            <h2>v-model(양방향 바인딩) 사용</h2>
+            <input type="text" v-model="username">
+            <p class="text">{{username}}</p>
+        </section>
+        <section>
+            <h2>v-if(조건문) 사용</h2>
+            <button type="button" v-on:click="visible = true" v-bind:disabled
+            ="visible">visible</button>
+            <p v-if="visible">보이나요?</p>
+        </section>
+        <section>
+            <h2>v-for(반복문) 사용</h2>
+            <ul>
+                <li v-for="item in items">{{item}}</li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return {
+                    counter: 100,
+                    message: '텍스트를 입력해주세요',
+                    reversText: '텍스트 거꾸로 쓰기',
+                    username: '짐코딩',
+                    visible: false,
+                    items: ['사과', '딸기', '포도']
+                }
+            },
+            methods: {
+                addCounter: function(){
+                    this.counter = this.counter + 1;
+                },
+                check: function(){
+                    alert('확인해주세요');
+                },
+                reverseMessage: function(){
+                    this.reversText = this.reversText
+                    .split('')
+                    .reverse()
+                    .join('')
+                    // split():짜르기 reverse():반대로 join():묶기
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
