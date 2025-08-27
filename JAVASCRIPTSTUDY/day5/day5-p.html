@@ -8,24 +8,31 @@
 </head>
 <body>
     <div class="wrap" id="EF-P">
-        <div class="search-container">
-            <div class="header">
-                <h1>🔍 사용자 검색</h1>
-                <p>이름, 사용자명, 이메일로 검색해보세요</p>
-            </div>
+        <div class="container">
+            <h1>🎯 1단계: 기본 클릭 이벤트</h1>
             
-            <div class="search-section">
-                <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="검색어를 입력하세요... (예: John, Bret, Sincere@april.biz)">
-                    <div class="search-icon">🔍</div>
-                </div>
-                
-                <div class="stats">
-                    <span id="searchStats">검색을 시작해보세요</span>
-                    <span id="loadingStatus"></span>
-                </div>
-                
-                <div id="searchResults"></div>
+            <button id="myButton">클릭해보세요!</button>
+            
+            <div id="message">아직 버튼을 클릭하지 않았습니다.</div>
+        </div>
+        <div class="container">
+            <h1>🎯 2단계: 실시간 입력 감지</h1>
+            <p>아래 입력창에 무엇인가 타이핑해보세요!</p>
+            
+            <input type="text" id="textInput" placeholder="여기에 입력하세요...">
+            
+            <div id="output" class="empty">
+                아직 아무것도 입력하지 않았습니다.
+            </div>
+        </div>
+        <div class="container">
+            <h1>🎯 3단계: 첫 번째 fetch API</h1>
+            <p>버튼을 클릭하면 실제 서버에서 사용자 정보를 가져와요!</p>
+            
+            <button id="fetchButton">사용자 정보 가져오기</button>
+            
+            <div id="result">
+                버튼을 클릭해서 데이터를 가져와보세요!
             </div>
         </div>
     </div>
