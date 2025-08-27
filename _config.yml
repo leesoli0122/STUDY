@@ -1,48 +1,12 @@
-# _config.yml
-
-title: "내 블로그/프로젝트 제목"
-description: "설명 작성"
-baseurl: "STUDY" # github pages에서 username.github.io/repo면 "/repo" 입력
-url: "https://leesoli0122.github.io" # 자신의 깃허브 페이지 URL
-
-# 테마
-theme: jekyll-theme-primer
-
-# 제외할 파일/폴더
+# Jekyll 처리에서 제외할 파일들
 exclude:
   - node_modules
-  - vendor
-  - Gemfile
-  - Gemfile.lock
-  - README.md
-  - CHANGELOG.md
-  - .jekyll-cache
-  - .github
   - package.json
   - package-lock.json
   - yarn.lock
-
-# 마크다운 설정
-markdown: kramdown
-kramdown:
-  input: GFM
-
-# SEO, 메타데이터 등 플러그인
-plugins:
-  - jekyll-seo-tag
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-paginate
-  - jekyll-readme-index
-  - jekyll-relative-links
-  - jekyll-default-layout
-  - jekyll-titles-from-headings
-  - jekyll-optional-front-matter
-
-# GitHub Pages 환경
-github:
-  is_project_page: true
-
-# 빌드 시 로그 최소화
-verbose: false
-incremental: false
+  - vue.github.io/Captain-Panjyo/node_modules
+  - vue.github.io/Captain-Panjyo/
+  - "*.json"
+  - README.md
+  - .gitignore
+  - .git/
