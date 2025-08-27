@@ -1,8 +1,0 @@
-Shark World User Login
-email
-email
-password
-password
- Keep me logged in
-forgot your password?
-login in
