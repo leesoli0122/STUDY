@@ -167,3 +167,13 @@ button:hover { background: #0056b3; }
 #EF-P .user-info { background: #e9ecef; padding: 15px; margin: 10px 0; border-radius: 5px; }
 #EF-P .user-name { font-size: 18px; font-weight: bold; color: #333; margin-bottom: 5px; }
 #EF-P .user-details { color: #666; font-size: 14px; }
+#EF-P #userList { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
+#EF-P .user-card { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 20px; transition: transform 0.2s; }
+#EF-P .user-card:hover { transform: translateY(-5px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+#EF-P .user-name { font-size: 18px; font-weight: bold; color: #333; margin-bottom: 8px; }
+#EF-P .user-email { color: #007bff; margin-bottom: 8px; }
+#EF-P .user-company { color: #666; font-size: 14px; margin-bottom: 8px; }
+#EF-P .user-phone { color: #666; font-size: 14px; }
+#EF-P .loading { text-align: center; color: #007bff; font-size: 18px; padding: 40px; }
+#EF-P .error { color: #dc3545; background: #f8d7da; border: 1px solid #f5c6cb; padding: 20px; border-radius: 5px; text-align: center; }
+#EF-P .count { color: #6c757d; font-size: 14px; margin-bottom: 15px; }

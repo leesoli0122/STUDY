@@ -79,23 +79,78 @@ const fetchButton = document.getElementById('fetchButton');
 const result = document.getElementById('result');
 
 fetchButton.addEventListener('click', async function() {
-    // 여기에 fetch 코드 작성
-});
-async function fetchWithLoading(url, resultElement) {
+    console.log('버튼이 클릭되었습니다');
+
     try {
-        // 로딩 표시
-        resultElement.innerHTML = '<div class="loading">불러오는 중...</div>';
-        
-        const response = await fetch(url);
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        
-        const data = await response.json();
-        
-        // 성공 시 데이터 표시
-        resultElement.innerHTML = `<div class="success">데이터 로드 완료!</div>`;
-        return data;
-    } catch (error) {
-        // 에러 표시
-        resultElement.innerHTML = `<div class="error">오류: ${error.message}</div>`;
+        console.log('try 블록 실행');
+    } catch(error) {
+        console.log('에러 발생:', error);
+        result.innerHTML = '<div class="error">데이터를 가져오는데 실패했습니다.</div>';
     }
-}
+});
+
+const API_URL = 'https://jsonplaceholder.typicode.com/users/1';
+
+fetchButton.addEventListener('click', async function () {
+    console.log('데이터 가져오기');
+    try {
+        // 4-1 로딩 메시지 표시
+        result.innerHTML = '<div class="loading">데이터를 불러오는 중...</div>';
+        // 4-2. 서버에서 데이터 가져오기
+        const response = await fetch(API_URL);
+        console.log('응답 받음:', response);
+        
+        // 4-3. JSON 형태로 변환
+        const user = await response.json();
+        console.log('사용자 데이터:', user);
+        
+        // 4-4. 화면에 표시 (일단 간단하게)
+        result.innerHTML = `<p>이름: ${user.name}</p>`;
+        
+    } catch (error) {
+        console.log('에러:', error);
+        result.innerHTML = '<div class="error">데이터를 가져오는데 실패했습니다.</div>';
+    }
+});
+
+fetchButton.addEventListener('click', async function() {
+    try {
+        result.innerHTML = '<div class="loading">데이터를 불러오는 중...</div>';
+        
+        const response = await fetch(API_URL);
+        const user = await response.json();
+        
+        // 예쁘게 HTML 만들기
+        result.innerHTML = `
+            <div class="user-info">
+                <div class="user-name">${user.name} (${user.username})</div>
+                <div class="user-details">📧 ${user.email}</div>
+                <div class="user-details">📱 ${user.phone}</div>
+                <div class="user-details">🌐 ${user.website}</div>
+                <div class="user-details">🏢 ${user.company.name}</div>
+            </div>
+        `;
+    } catch (error) {
+        result.innerHTML = '<div class="error">에러: ' + error.message + '</div>';
+    }
+});
+
+// 4단계
+const loadUsersBtn = document.getElementById('loadUsersBtn');
+const userList = document.getElementById('userList');
+
+loadUsersBtn.addEventListener('click', function () {
+    console.log('버튼 클릭');
+
+    try {
+        userList.innerHTML = '<div class="loading">사용자 목록을 불러오는 중...</div>';
+        
+        const response = await fetch('https://jsonplaceholder.typicode.com/users');
+        const users = await response.json(); // 이번엔 배열이 나와요!
+        
+        console.log('사용자들:', users); // 콘솔에서 배열 확인해보세요
+        console.log('사용자 수:', users.length); // 몇 명인지 확인
+    } catch (error) {
+        result.innerHTML = '<div class="error">에러: ' + error.message + '</div>';
+    }
+})
