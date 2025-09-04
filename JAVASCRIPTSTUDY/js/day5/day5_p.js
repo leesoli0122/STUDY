@@ -136,21 +136,116 @@ fetchButton.addEventListener('click', async function() {
 });
 
 // 4단계
+console.log('1단계: 요소 가져오기 시작');
+        
 const loadUsersBtn = document.getElementById('loadUsersBtn');
 const userList = document.getElementById('userList');
 
-loadUsersBtn.addEventListener('click', function () {
-    console.log('버튼 클릭');
+// 요소가 제대로 가져와졌는지 확인
+console.log('버튼 요소:', loadUsersBtn);
+console.log('목록 요소:', userList);
 
+if (!loadUsersBtn || !userList) {
+    console.error('요소를 찾을 수 없습니다!');
+} else {
+    console.log('✅ 1단계 완료: 모든 요소를 성공적으로 가져왔습니다');
+}
+
+// 🎯 2단계: 클릭 이벤트와 fetch API 설정
+console.log('2단계: 이벤트 리스너 설정 시작');
+
+const USERS_API = 'https://jsonplaceholder.typicode.com/users';
+
+loadUsersBtn.addEventListener('click', async function() {
+    console.log('🚀 버튼 클릭됨! 데이터 가져오기 시작');
+    
     try {
+        // 버튼 비활성화 (중복 클릭 방지)
+        loadUsersBtn.disabled = true;
+        loadUsersBtn.textContent = '불러오는 중...';
+        
+        // 로딩 메시지 표시
         userList.innerHTML = '<div class="loading">사용자 목록을 불러오는 중...</div>';
         
-        const response = await fetch('https://jsonplaceholder.typicode.com/users');
-        const users = await response.json(); // 이번엔 배열이 나와요!
+        console.log('📡 API 호출 중:', USERS_API);
         
-        console.log('사용자들:', users); // 콘솔에서 배열 확인해보세요
-        console.log('사용자 수:', users.length); // 몇 명인지 확인
+        // 서버에서 데이터 가져오기
+        const response = await fetch(USERS_API);
+        console.log('📨 응답 받음:', response);
+        
+        // 응답이 성공적인지 확인
+        if (!response.ok) {
+            throw new Error(`HTTP 오류! 상태: ${response.status}`);
+        }
+        
+        // JSON 데이터로 변환
+        const users = await response.json();
+        console.log('👥 가져온 사용자 데이터:', users);
+        console.log('📊 사용자 수:', users.length);
+        
+        // 🎯 3단계: 배열을 HTML로 변환
+        console.log('3단계: HTML 변환 시작');
+        
+        // 방법 1: forEach 사용
+        let html = '';
+        console.log('🔄 각 사용자별로 카드 생성 시작');
+        
+        users.forEach(function(user, index) {
+            console.log(`${index + 1}번째 사용자 처리 중: ${user.name}`);
+            
+            // 각 사용자마다 카드 HTML 생성
+            html += `
+                <div class="user-card">
+                    <div class="user-name">${user.name}</div>
+                    <div class="user-email">📧 ${user.email}</div>
+                    <div class="user-company">🏢 ${user.company.name}</div>
+                    <div class="user-phone">📱 ${user.phone}</div>
+                </div>
+            `;
+        });
+        
+        console.log('✅ HTML 생성 완료, 길이:', html.length);
+        
+        // 사용자 수 정보 추가
+        const countInfo = `<div class="count">총 ${users.length}명의 사용자를 찾았습니다</div>`;
+        
+        // 화면에 표시
+        userList.innerHTML = countInfo + html;
+        
+        console.log('🎉 3단계 완료: 화면에 표시 완료');
+        
     } catch (error) {
-        result.innerHTML = '<div class="error">에러: ' + error.message + '</div>';
+        console.error('❌ 에러 발생:', error);
+        
+        // 에러 메시지 표시
+        userList.innerHTML = `
+            <div class="error">
+                <strong>오류 발생!</strong><br>
+                ${error.message}
+            </div>
+        `;
+        
+    } finally {
+        // 버튼 다시 활성화
+        loadUsersBtn.disabled = false;
+        loadUsersBtn.textContent = '모든 사용자 불러오기';
+        
+        console.log('🔄 버튼 상태 복구 완료');
     }
-})
+});
+
+console.log('✅ 2단계 완료: 이벤트 리스너 등록 완료');
+
+// 🎯 추가 기능: 페이지 로드 완료 확인
+console.log('📱 페이지 로드 완료, 버튼 클릭 대기 중...');
+console.log('💡 개발자 도구 Network 탭에서 API 호출을 확인할 수 있습니다');
+
+// 🎯 디버깅용 헬퍼 함수들
+window.debugInfo = function() {
+    console.log('=== 디버그 정보 ===');
+    console.log('버튼 요소:', loadUsersBtn);
+    console.log('목록 요소:', userList);
+    console.log('API URL:', USERS_API);
+};
+
+console.log('💬 콘솔에서 debugInfo() 함수를 호출하면 디버그 정보를 볼 수 있습니다');
