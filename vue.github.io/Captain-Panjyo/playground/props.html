@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>component</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id="app2">
+        <app-header v-bind:propsdata="message"></app-header>
+        <app-content v-bind:propsdata="num"></app-content>
+        <main-div></main-div>
+    </div>
+    <script>
+        var app2 = Vue.createApp({
+            data() {
+                return {
+                    message: 'Hi',
+                    num: 10
+                }
+            }
+        });
+
+        // 지역으로 동일한 이름 등록 (전역 등록 대신)
+        app2.component('app-header', {
+            props: ['propsdata'],
+            template: '<h1>{{ propsdata }}</h1>',
+        });
+
+        app2.component('main-div', {
+            template: '<div>Div</div>'
+        });
+
+        app2.component('app-content', {
+            props: ['propsdata'],
+            template: '<div>{{ propsdata }}월</div>'
+        })
+
+        app2.mount('#app2');
+    </script>
+</body>
+
+</html>

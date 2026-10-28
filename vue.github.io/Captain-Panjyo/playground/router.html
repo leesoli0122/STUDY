@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>router</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://unpkg.com/vue-router@4"></script>
+</head>
+
+<body>
+    <div id="app">
+        <router-view></router-view>
+        <div>
+            <router-link to="/login">Login</router-link>
+            <router-link to="/main">Main</router-link>
+        </div>
+    </div>
+
+    <script>
+        var LoginComponent = {
+            template: '<div>login</div>'
+        }
+
+        var MainComponent = {
+            template: '<div>main</div>'
+        }
+
+        // 라우터 인스턴스 생성
+        var router = VueRouter.createRouter({
+            history: VueRouter.createWebHashHistory(), // 또는 VueRouter.createWebHistory() 선택
+            // 페이지의 라우팅 정보
+            routes: [
+                // login 페이지지
+                {
+                    // 페이지의 url 이름
+                    path:'/login',
+                    // 해당 url에서 표시될 컴포넌트
+                    component: LoginComponent,
+                    name: 'login'
+                },
+                // main 페이지지
+                {
+                    path:'/main',
+                    component: MainComponent,
+                    name: 'main'
+                }
+            ]
+        });
+
+        // 인스턴스에 라우터 인스턴스를 등록
+        var app = Vue.createApp();
+        app.use(router).mount('#app');
+
+    </script>
+</body>
+
+</html>

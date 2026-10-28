@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>component</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <app-header></app-header>
+        <app-content></app-content>
+        <app-footer></app-footer>
+    </div>
+    <script>
+        // 애플리케이션 인스턴스 생성, 여러개 생성할 수 있다
+        var app = Vue.createApp({
+            // 지역 컴포넌트 등록
+            components: {
+                'app-footer': {
+                    template: '<footer>Footer</footer>'
+                }
+            }
+        });
+
+        // 전역 컴포넌트 등록
+        app.component('app-header', {
+            template: '<h1>Header</h1>'
+        });
+
+        app.component('app-content', {
+            template: '<div>Content</div>'
+        });
+
+        // Vue 3에서는 mount 메서드로 DOM 요소에 애플리케이션 연결
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

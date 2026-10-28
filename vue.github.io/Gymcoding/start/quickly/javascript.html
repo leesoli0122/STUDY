@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript</title>
+</head>
+<body>
+    <button type="button" onclick="increment()">counter: <span id="counter"></span></button>
+    <script>
+        let counter = 100;
+        
+        function increment(){
+            counter++;
+            printcounter();
+        }
+        function printcounter(){
+            let $span = document.querySelector('#counter');
+            $span.textContent = counter;
+        }
+        printcounter();
+    </script>
+</body>
+</html>

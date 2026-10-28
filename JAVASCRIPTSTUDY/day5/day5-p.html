@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <div class="wrap" id="EF-P">
+        <div class="container">
+            <h1>🎯 1단계: 기본 클릭 이벤트</h1>
+            
+            <button id="myButton">클릭해보세요!</button>
+            
+            <div id="message">아직 버튼을 클릭하지 않았습니다.</div>
+        </div>
+        <div class="container">
+            <h1>🎯 2단계: 실시간 입력 감지</h1>
+            <p>아래 입력창에 무엇인가 타이핑해보세요!</p>
+            
+            <input type="text" id="textInput" placeholder="여기에 입력하세요...">
+            
+            <div id="output" class="empty">
+                아직 아무것도 입력하지 않았습니다.
+            </div>
+        </div>
+        <div class="container">
+            <h1>🎯 3단계: 첫 번째 fetch API</h1>
+            <p>버튼을 클릭하면 실제 서버에서 사용자 정보를 가져와요!</p>
+            
+            <button id="fetchButton">사용자 정보 가져오기</button>
+            
+            <div id="result">
+                버튼을 클릭해서 데이터를 가져와보세요!
+            </div>
+        </div>
+        <div class="container">
+            <h1>🎯 4단계: 여러 사용자 목록</h1>
+            <p>여러 명의 사용자 정보를 한 번에 가져와서 카드로 표시해봅시다!</p>
+            
+            <button id="loadUsersBtn">모든 사용자 불러오기</button>
+            
+            <div id="userList">
+                <!-- 여기에 사용자 카드들이 표시될 예정 -->
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../js/day5/day5_p.js"></script>
+</html>

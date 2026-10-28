@@ -1,0 +1,85 @@
+* {  margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+
+/* 네비게이션 바 */
+.navbar { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 1rem 0; position: fixed; top: 0; width: 100%; z-index: 1000; transition: all 0.3s ease; }
+.navbar.scrolled { background: rgba(255, 255, 255, 0.95); box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); }
+.nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
+.logo { font-size: 1.5rem; font-weight: bold; color: white; text-decoration: none; }
+.navbar.scrolled .logo { color: #333; }
+.nav-menu { display: flex; list-style: none; gap: 2rem; }
+.nav-menu a { color: white; text-decoration: none; transition: color 0.3s ease; cursor: pointer; }
+.navbar.scrolled .nav-menu a { color: #333; }
+.nav-menu a:hover { color: #ff6b6b; }
+.hamburger { display: none; flex-direction: column; cursor: pointer; padding: 0.5rem; }
+.hamburger span { width: 25px; height: 3px; background: white; margin: 3px 0; transition: 0.3s; }
+.navbar.scrolled .hamburger span { background: #333; }
+
+/* 메인 콘텐츠 */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; }
+.hero-content h1 { font-size: 3rem; margin-bottom: 1rem; opacity: 0; transform: translateY(30px); animation: fadeInUp 1s ease forwards; }
+.hero-content p { font-size: 1.2rem; margin-bottom: 2rem; opacity: 0; transform: translateY(30px); animation: fadeInUp 1s ease 0.3s forwards; }
+.btn { background: linear-gradient(45deg, #ff6b6b, #ff8e8e);  color: white; padding: 1rem 2rem; border: none; border-radius: 50px;  cursor: pointer; font-size: 1rem; text-decoration: none; display: inline-block; transition: all 0.3s ease; opacity: 0; transform: translateY(30px); animation: fadeInUp 1s ease 0.6s forwards; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3); }
+
+/* 섹션들 */
+.section { padding: 5rem 0; opacity: 0; transform: translateY(50px); transition: all 0.6s ease; }
+.section.visible { opacity: 1; transform: translateY(0); }
+.features { background: white; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+.feature-card { background: #f8f9fa; padding: 2rem; border-radius: 10px;  text-align: center; transition: all 0.3s ease; cursor: pointer; }
+.feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
+.feature-card h3 { color: #333; margin-bottom: 1rem; }
+
+/* 모달 */
+.modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); animation: fadeIn 0.3s ease; }
+.modal-content { background-color: white; margin: 10% auto; padding: 2rem; border-radius: 10px; width: 80%; max-width: 500px; animation: slideIn 0.3s ease; }
+.close { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+.close:hover { color: #000; }
+
+/* 다크 모드 토글 */
+.dark-mode-toggle { background: none; border: 2px solid white; color: white; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; transition: all 0.3s ease; }
+.navbar.scrolled .dark-mode-toggle { border-color: #333; color: #333; }
+.dark-mode-toggle:hover { background: white; color: #333; }
+
+/* 다크 모드 스타일 */
+body.dark-mode { background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); }
+body.dark-mode .features { background: #2c3e50; color: white; }
+body.dark-mode .feature-card { background: #34495e; color: white; }
+
+/* 스크롤 진행 바 */
+.progress-bar { position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(to right, #ff6b6b, #ff8e8e); z-index: 1001; transition: width 0.3s ease; }
+
+/* 애니메이션 키프레임 */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .hamburger { display: flex; }
+    .nav-menu { position: fixed; left: -100%; top: 70px; flex-direction: column; background-color: rgba(255, 255, 255, 0.95);  width: 100%; text-align: center; transition: 0.3s; padding: 2rem 0; }
+    .nav-menu.active { left: 0; }
+    .nav-menu a { color: #333; padding: 1rem 0;  }
+    .hero-content h1 { font-size: 2rem; }
+}

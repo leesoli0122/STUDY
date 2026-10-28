@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.13",
+    "vue": "^2.7.16",
+    "vue-router": "^3.6.5"
+  }
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>watch</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="addNum">increase</button>
+        <p>{{ num }}</p>
+    </div>
+
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    num: 10
+                }
+            },
+            watch: {
+                num: function() {
+                    this.logText();
+                }
+            },
+            methods: {
+                addNum: function() {
+                    this.num = this.num + 1;
+                },
+                logText: function() {
+                    console.log('changed');
+                    
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

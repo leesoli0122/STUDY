@@ -1,0 +1,12 @@
+# Jekyll 처리에서 제외할 파일들
+exclude:
+  - node_modules
+  - package.json
+  - package-lock.json
+  - yarn.lock
+  - vue.github.io/Captain-Panjyo/node_modules
+  - vue.github.io/Captain-Panjyo/
+  - "*.json"
+  - README.md
+  - .gitignore
+  - .git/
