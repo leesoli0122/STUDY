@@ -1,38 +1,72 @@
 import './App.css'
 
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
 import MemoContainer from './components/MemoContainer'
 import SideBar from './components/SideBar'
+import { setItem, getItem } from './lib/storage'
+import debounce from 'lodash.debounce';
+
+const debouncedSetItem = debounce(setItem, 5000)
+
 function App() {
-  const [memos, setMemos] = useState([
-    {
-      title: 'Memo 1',
-      content: 'This is memo 1',
-      createdAt: 17931687576260,
-      updatedAt: 17931687576260,
-    },
-    {
-      title: 'Memo 2',
-      content: 'This is memo 2',
-      createdAt: 17931687576263,
-      updatedAt: 17931687576263,
-    }
-  ])
+  const [memos, setMemos] = useState(getItem('memo') || [],);
 
   const [selectedMemoIndex, setSelectedMemoIndex] = useState(0);
 
-  const setMemo = (newMemo) => {
-    memos[selectedMemoIndex] = newMemo;
+  const setMemo = useCallback(
+    (newMemo) => {
+      setMemos((memos) => {
+        const newMemos = [...memos];
 
-    console.log('memos', memos);
+        newMemos[selectedMemoIndex] = newMemo;
+        debouncedSetItem('memo', newMemos);
 
-    setMemos(memos);
-  }
+        return newMemos;
+      });
+    },
+    [selectedMemoIndex]
+  )
+
+  const addMemo = useCallback(() => {
+    setMemos((memos) => {
+      const now = new Date().getTime();
+      
+      const newMemos = [
+        ...memos,
+        {
+          title:'Untitled',
+          content:'',
+          createdAt: now,
+          updatedAt:now
+        }
+      ];
+      debouncedSetItem('memo', newMemos);
+
+      return newMemos;
+    })
+
+    setSelectedMemoIndex(memos.length);
+
+  }, [memos]);
+
+  const deleteMemo = useCallback((index) => {
+    setMemos((memos) => {
+      const newMemos = [...memos];
+      newMemos.splice(index, 1);
+      debouncedSetItem('memo', newMemos);
+
+      return newMemos;
+
+    });
+    if(index === selectedMemoIndex) {
+      setSelectedMemoIndex(0);
+    }
+  }, [setSelectedMemoIndex]);
 
   return (
     <div className='App'>
-      <SideBar memos={memos}/>
+      <SideBar memos={memos} selectedMemoIndex={selectedMemoIndex} setSelectedMemoIndex={setSelectedMemoIndex} addMemo={addMemo} deleteMemo={deleteMemo}/>
       <MemoContainer memo={memos[selectedMemoIndex]} setMemo={setMemo}/>
     </div>
   )

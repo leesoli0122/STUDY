@@ -1,8 +1,9 @@
+import './index.css';
 
 function SideBarHeader() {
     return (
         <div className="SideBarHeader">
-            사이드바 헤더
+            메모장
         </div>
     )
 }
