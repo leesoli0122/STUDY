@@ -1,0 +1,133 @@
+@charset "UTF-8";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family:
+    "Pretendard",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+  padding: 30px 20px;
+}
+.container {
+  max-width: 1650px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+.header-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+h1 {
+  font-size: 24px;
+  color: #0f172a;
+}
+.guide-text {
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 4px;
+}
+.reset-btn {
+  padding: 6px 12px;
+  font-size: 12px;
+  background-color: #ef4444;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.reset-btn:hover {
+  background-color: #dc2626;
+}
+.table-container {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+th,
+td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #e2e8f0;
+  border-right: 1px solid #f1f5f9;
+  text-align: left;
+  vertical-align: middle;
+  white-space: pre-line;
+  line-height: 1.5;
+}
+th:last-child,
+td:last-child {
+  border-right: none;
+}
+th {
+  background-color: #1e293b;
+  color: #f8fafc;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+}
+tbody tr:hover {
+  background-color: #f8fafc;
+}
+.center {
+  text-align: center;
+}
+
+/* 프로젝트 URL 링크 스타일 */
+.project-link {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out;
+}
+.project-link:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+/* 진행여부 셀 스타일 및 색상 */
+.status-cell {
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.status-cell[data-status="대기중"] {
+  background-color: #fef3c7 !important;
+  color: #92400e !important;
+}
+.status-cell[data-status="진행중"] {
+  background-color: #dcfce7 !important;
+  color: #166534 !important;
+}
+.status-cell[data-status="완료"] {
+  background-color: #dbeafe !important;
+  color: #1e40af !important;
+}
+
+/* 편집 가능 셀 반응 효과 */
+[contenteditable="true"]:focus {
+  outline: 2px solid #3b82f6;
+  background-color: #ffffff !important;
+}

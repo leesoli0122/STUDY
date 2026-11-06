@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>웹디자인개발기능사 실기 워크리스트</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header-wrap">
+        <div>
+          <h1>웹디자인개발기능사 실기 워크리스트</h1>
+          <p class="guide-text">
+            <strong>[프로젝트 이름]</strong>을 클릭하면 해당 과제의 HTML
+            페이지로 이동합니다. <strong>[진행여부]</strong> 셀을 클릭해 상태를
+            변경하면 색상이 자동 반영됩니다.
+          </p>
+        </div>
+        <button class="reset-btn" onclick="resetData()">데이터 초기화</button>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 45px">No</th>
+              <th>프로젝트 이름 (URL)</th>
+              <th>컬러 규격</th>
+              <th>레이아웃</th>
+              <th>로고 규격</th>
+              <th>메뉴</th>
+              <th>슬라이드</th>
+              <th>컨텐츠 구성</th>
+              <th>푸터 구성</th>
+              <th style="width: 90px">진행여부</th>
+              <th>비고</th>
+            </tr>
+          </thead>
+          <tbody id="worklist-body">
+            <!-- JavaScript 생성 영역 -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 1. 과제 전용 데이터 파일 로드 -->
+    <script src="tasks.js"></script>
+
+    <script>
+      const STORAGE_KEY = "web_design_worklist_v2";
+
+      function loadSavedData() {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          try {
+            return JSON.parse(saved);
+          } catch (e) {
+            return initialTaskData;
+          }
+        }
+        return initialTaskData;
+      }
+
+      function saveData(data) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const currentData = loadSavedData();
+        renderTable(currentData);
+      });
+
+      function renderTable(data) {
+        const tbody = document.getElementById("worklist-body");
+        tbody.innerHTML = "";
+
+        data.forEach((item, index) => {
+          const tr = document.createElement("tr");
+
+          // 번호
+          const tdNo = document.createElement("td");
+          tdNo.classList.add("center");
+          tdNo.textContent = item.no;
+          tr.appendChild(tdNo);
+
+          // 프로젝트 이름 (URL 링크 포함)
+          const tdName = document.createElement("td");
+          const link = document.createElement("a");
+          link.href = item.url;
+          link.className = "project-link";
+          link.textContent = item.name;
+          tdName.appendChild(link);
+          tr.appendChild(tdName);
+
+          // 나머지 명세 데이터
+          const fields = [
+            "color",
+            "layout",
+            "logo",
+            "menu",
+            "slide",
+            "contents",
+            "footer",
+          ];
+          fields.forEach((field) => {
+            const td = document.createElement("td");
+            td.textContent = item[field];
+            tr.appendChild(td);
+          });
+
+          // 진행여부 (직접 편집 + 자동 색상 + 로컬저장)
+          const tdStatus = document.createElement("td");
+          tdStatus.classList.add("status-cell");
+          tdStatus.contentEditable = "true";
+          tdStatus.textContent = item.status;
+          tdStatus.setAttribute("data-status", item.status);
+
+          tdStatus.addEventListener("input", function () {
+            const val = this.textContent.trim();
+            this.setAttribute("data-status", val);
+            data[index].status = val;
+            saveData(data);
+          });
+          tr.appendChild(tdStatus);
+
+          // 비고 (직접 편집 가능)
+          const tdNote = document.createElement("td");
+          tdNote.contentEditable = "true";
+          tdNote.textContent = item.note;
+          tdNote.addEventListener("input", function () {
+            data[index].note = this.textContent;
+            saveData(data);
+          });
+          tr.appendChild(tdNote);
+
+          tbody.appendChild(tr);
+        });
+      }
+
+      function resetData() {
+        if (confirm("수정된 진행여부 및 비고 상태를 초기화하시겠습니까?")) {
+          localStorage.removeItem(STORAGE_KEY);
+          renderTable(initialTaskData);
+        }
+      }
+    </script>
+  </body>
+</html>
