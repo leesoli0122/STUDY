@@ -7,7 +7,7 @@ import testWithComma from '../../stores/test/testWithComma';
 function CompletionPage() {
   const test = useRecoilValue(testWithComma);
 
-  axios.get('http://localhost:3000').then((res) => {
+  axios.get('http://localhost:3001/surveys').then((res) => {
     console.log('res', res);
   })
   return (
