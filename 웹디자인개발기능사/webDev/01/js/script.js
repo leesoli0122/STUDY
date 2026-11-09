@@ -47,14 +47,19 @@ $(function() {
     });
 })
 
-$(document).ready(function() {
-    if (typeof Swiper !== 'undefined'){
-        $('.compare-scroll-cont').each(function() {
-            var pagination = this.querySelector('.scroll__pagination');
+// 팝업
+$(function () {
+  let $lastFocus; // ← 두 함수가 같이 쓸 수 있는 위치에 선언
 
-            new Swiper(this, {
-                slide
-            })
-        })
-    }
-})
+  $('.pop').on('click', function (e) {
+    e.preventDefault();
+    $lastFocus = $(this); // ← let 빼고 값만 저장
+    $('.pop-wrap').show();
+    $('.pop-inner').attr('tabindex', '-1').focus();
+  });
+
+  $('.btn-close').on('click', function () {
+    $('.pop-wrap').hide();
+    if ($lastFocus) $lastFocus.focus();
+  });
+});
