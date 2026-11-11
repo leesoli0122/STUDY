@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+* {margin:0; padding:0; box-sizing: border-box;}
+ul,li {list-style: none;}
+a {display: block; color: inherit; text-decoration: none; cursor: pointer;}
+button {background: transparent; border:0; cursor: pointer;}
+img {width: 100%; vertical-align: top; object-fit: cover; font-size: 0;}
+
+body {background-color: #fff; color:#333; width: 100%;}
+
+:root {
+    --main:#b9955f;
+    --hover1:#5a482d;
+    --sub:#96b95f;
+    --hover2:#495a2d;
+}
+
+.wrap {width: 1200px; margin: 0 auto; position: relative;}
+
+/* header */
+.header-wrap {width: 1200px; height: 100px; display: flex; justify-content: space-between; align-items: center; background-color: #b9955f; padding: 0 24px;}
+.header-wrap .logo {width: 200px; height: 40px;}
+
+nav {height: 100%; display: flex; align-items: flex-end;}
+.menu {display: flex; align-items: flex-start; position: relative;}
+.menu > li {width: 150px; }
+.menu > li > a {color: #fff; font-size: 20px; font-weight: 500; text-align: center; padding: 12px 0;}
+.menu > li:hover > a {background-color: var(--hover1); font-weight: 700;}
+
+.sub-menu {display: none; position: absolute; top:100%; z-index: 10;}
+.sub-menu > li {width: 150px;}
+.sub-menu > li > a {padding: 10px 0; text-align: center; font-size: 18px;}
+.sub-menu > li:hover > a {background-color: var(--hover2); color: #fff;}
+
+.nav-bg {display: none; position: absolute; top:100%; left:0; width: 1200px; height:125px; background-color: var(--sub); z-index: 9;}
+
+/* slide */
+.slide-wrap {width: 1200px; height: 300px; position: relative; overflow: hidden;}
+.slide {width: 1200px; height: 300px; position: relative;}
+.slide-item {position: absolute; top:0; left:0; width: 1200px; height: 300px; display: none;}
+.slide-item:first-child {display: block;}
+.slide-item span {position: absolute; top:50%; left:50%; transform: translate(-50%,-50%); background-color: #4a3c26af; color: #fff; padding: 20px 24px; display: inline-block; width: 100%; text-align: center;}
+
+/* contents */
+.contents-wrap {width: 1200px; height: 200px; display: flex; align-items: center; justify-content: space-between;}
+.contents-wrap > div {width: calc(100% / 3); height: 100%;}
+.contents-wrap > div h3 {font-size: 18px; border: 1px solid #444; border-bottom: 0; background-color: #fff; display: inline-block; padding:0 10px; height: 46px; line-height: 46px;}
+.contents-wrap > div > ul {border: 1px solid #444; background-color: #fff; margin-top: -1px; height: calc(100% - 46px); padding: 10px; border-right: 0;}
+
+.notice li { height: calc(100% / 4); padding: 6px; border-bottom: 1px solid #444;}
+.notice li a {display: flex; align-items: center; justify-content: space-between;}
+.notice li:hover a { color: var(--main); font-weight: 500;}
+
+.galley ul {display: flex; gap: 4px; flex-direction: row}
+.galley li {width: calc(100% / 3);}
+.galley li a {height: 100%;}
+.galley li img {height: 100%; object-fit: contain;}
+.galley li:hover img {opacity: .8; object-fit: cover;}
+
+.link {height: 100%;}
+.link a {height: 100%; position: relative;}
+.link img {height: 100%;}
+.link span {position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); background-color: #96b95fca; color: #fff; padding: 10px; border-radius:10px;}
+
+/* footer */
+.footer-wrap {width: 1200px; height: 100px; display: flex; align-items: center; background-color: var(--hover1); color: #fff; padding: 0 24px;}
+.f-cont {flex:1; margin-right: 24px; border-right: 1px solid #fff;}
+.f-cont .f-menu {display: flex; align-items: center; gap: 20px; justify-content: center;}
+.f-cont .f-menu li {padding: 10px 0;}
+.f-cont .copy {font-size: 16px; opacity: .8; display: flex; align-items: center; justify-content: center; padding: 10px; border-top: 1px solid #fff;}
+
+.select {height: 40px; padding:0 10px;}
+
+/* popup */
+.pop-wrap {display: none; position: fixed; top:0; left:0; width: 100%; height: 100%; background-color: #333333b7; z-index: 11;}
+.pop-inner {position: absolute; top:50%; left:50%; transform: translate(-50%,-50%); width: 400px; height: 300px; display: block; background-color: #fff; color: #333; padding: 20px 24px; border-radius: 20px;}
+.pop-inner h2 {padding-bottom: 10px; border-bottom: 1px solid #444; font-size: 20px;}
+.close {position: absolute; bottom: 20px; right: 24px; font-size: 18px; padding: 10px 20px;}
+.close:hover {background-color: var(--hover2); color: #fff;}

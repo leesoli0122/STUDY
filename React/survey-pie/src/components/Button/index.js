@@ -20,7 +20,7 @@ const colorMap = {
 
 const Button = styled.button`
   padding: 16px 24px;
-  width: 200px;
+  min-width: 200px;
 
   color: ${(props) => {
     // 1번 방법
@@ -33,6 +33,7 @@ const Button = styled.button`
   border-radius: 4px;
   border: none;
   font-weight: bold;
+  font-size: 18px;
 
   border: ${({ type }) =>
     type === 'TERTIARY'
