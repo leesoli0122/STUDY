@@ -11,6 +11,10 @@ function QuestionBox() {
   const [answer, setAnswer] = useCurrentAnswer();
   const question = useCurrentQuestion(); //초기에는 undefined
 
+  if (!question) {
+    return null;
+  }
+
   return (
     <QuestionBoxWrapper>
       <Title>{question.title}</Title>

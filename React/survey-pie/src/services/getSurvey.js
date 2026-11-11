@@ -1,4 +1,4 @@
-import mainApi from "./mainApi";
+import mainApi from "./apis/mainApi";
 
 function getSurvey(surveyId) {
     return mainApi.get(`/surveys/${surveyId}`,
