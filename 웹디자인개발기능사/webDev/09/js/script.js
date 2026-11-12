@@ -36,4 +36,17 @@ $(function () {
         $('.tab-cont > div').hide();
         $('.tab-cont > div').eq(index).show();
     })
+});
+// pop
+$(function() {
+    let $lastFocus;
+    $('.pop').on('click', function(){
+        $('.pop-wrap').show();
+        $lastFocus = $(this);
+        $('.pop-wrap .inner').attr('tabindex', '-1').focus();
+    })
+    $('.close').on('click', function(){
+        $('.pop-wrap').hide();
+        $lastFocus.focus();
+    })
 })
