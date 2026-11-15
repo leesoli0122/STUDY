@@ -28,7 +28,7 @@ $(function () {
         $(this).attr('aria-selected', 'false');
 
         $(this).parent().addClass('active');
-        $(this).attr('aria-seleted', 'true');
+        $(this).attr('aria-selected', 'true');
 
         $('.tab-cont > div').hide();
         $('.tab-cont > div').eq(index).show();
