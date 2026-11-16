@@ -30,7 +30,7 @@ $(function() {
     $('.pop').on('click', function(e) {
         e.preventDefault();
         $('.pop-wrap').show();
-        $lasfFocus = $(this).focus();
+        $lastFocus = $(this).focus();
         $('.inner').attr('tabindex', '-1').focus();
     });
     $('.close').on('click', function() {
