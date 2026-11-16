@@ -12,8 +12,8 @@ const initialTaskData = [
     slide: "위↔아래 (3초)",
     contents: "공지+갤러리(탭)\n배너\n바로가기\n레이어팝업",
     footer: "로고(grayscale)\n카피라이트\nSNS",
-    status: "대기중",
-    note: "공지사항 첫 번째 클릭 시 레이어 팝업 표시",
+    status: "완료",
+    note: "탭, 팝업 js 더 연습 필요",
   },
   {
     no: 2,
@@ -26,8 +26,8 @@ const initialTaskData = [
     slide: "좌↔우 (3초)",
     contents: "공지사항\n갤러리\n배너\n모달 팝업",
     footer: "로고(grayscale)\n카피라이트\n패밀리사이트",
-    status: "대기중",
-    note: "공지/갤러리 분리 구성, 모달 팝업 적용",
+    status: "완료",
+    note: "팝업js에서 포커스만 잘 하면 될 듯.",
   },
   {
     no: 3,
@@ -40,8 +40,8 @@ const initialTaskData = [
     slide: "Fade in/out (3초)",
     contents: "공지+갤러리(탭)\n배너\n바로가기\n레이어팝업",
     footer: "로고(grayscale)\n카피라이트\n하단메뉴",
-    status: "대기중",
-    note: "페이드 인/아웃 효과 적용",
+    status: "완료",
+    note: "페이드 인/아웃 효과, 탭, 팝업 js 더 연습 필요",
   },
   {
     no: 4,
@@ -54,8 +54,8 @@ const initialTaskData = [
     slide: "Fade in/out (3초)",
     contents: "공지사항\n갤러리(hover opacity)\n바로가기\n레이어팝업",
     footer: "카피라이트\n하단메뉴\n패밀리사이트",
-    status: "대기중",
-    note: "갤러리 이미지 마우스 오버 시 투명도 변화",
+    status: "완료",
+    note: "스크립트 막히는 부분 없었음.\n네비: nav-bg 같이 내려오기\n슬라이드: fadeOut/fadeIn 팝업",
   },
   {
     no: 5,
@@ -124,7 +124,7 @@ const initialTaskData = [
     slide: "Fade in/out (3초)",
     contents: "공지+갤러리(탭)\n배너\n바로가기\n레이어팝업",
     footer: "로고(grayscale)\n카피라이트\n하단메뉴",
-    status: "대기중",
+    status: "완료",
     note: "좌측 세로 레이아웃 (Width 1000px, Left 정렬)",
   },
   {
@@ -138,7 +138,7 @@ const initialTaskData = [
     slide: "Fade in/out (3초)",
     contents: "공지사항\n갤러리\n바로가기\n모달 팝업",
     footer: "카피라이트\nSNS\n패밀리사이트",
-    status: "대기중",
+    status: "완료",
     note: "좌측 L자형 레이아웃, 모달 레이어 팝업",
   },
   {
@@ -152,7 +152,7 @@ const initialTaskData = [
     slide: "좌↔우 (3초)",
     contents: "공지사항\n갤러리(hover opacity)\n배너\n레이어팝업",
     footer: "로고(grayscale)\n카피라이트\n하단메뉴",
-    status: "대기중",
+    status: "완료",
     note: "좌측 메뉴 구조, 슬라이드 좌우 이동",
   },
   {
@@ -166,7 +166,7 @@ const initialTaskData = [
     slide: "좌↔우 (3초)",
     contents: "공지사항\n갤러리\n바로가기\n모달 팝업",
     footer: "로고(grayscale)\n카피라이트\n패밀리사이트",
-    status: "대기중",
+    status: "완료",
     note: "세로형 메뉴 와이어프레임 구성",
   },
   {
@@ -180,7 +180,7 @@ const initialTaskData = [
     slide: "위↔아래 (3초)",
     contents: "배너\n공지+갤러리(탭)\n바로가기\n레이어팝업",
     footer: "로고(grayscale)\n카피라이트\nSNS",
-    status: "대기중",
+    status: "완료",
     note: "로그인/회원가입 스팟메뉴(Spot Menu) 포함",
   },
   {
@@ -194,7 +194,7 @@ const initialTaskData = [
     slide: "좌↔우 (3초)",
     contents: "배너\n공지사항\n갤러리\n모달 팝업",
     footer: "로고(grayscale)\n카피라이트\n패밀리사이트",
-    status: "대기중",
+    status: "완료",
     note: "3단 세로 분할 구조 (Left, Center, Right)",
   },
   {
@@ -208,7 +208,7 @@ const initialTaskData = [
     slide: "Fade in/out (3초)",
     contents: "바로가기\n배너\n공지+갤러리(탭)\n레이어팝업",
     footer: "로고(grayscale)\n카피라이트\n하단메뉴",
-    status: "대기중",
+    status: "완료",
     note: "스팟메뉴 포함, 세로 전체 100% 확산",
   },
   {
@@ -222,7 +222,7 @@ const initialTaskData = [
     slide: "Fade in/out (3초)",
     contents: "바로가기\n공지사항\n갤러리(hover opacity)\n레이어팝업",
     footer: "카피라이트\n하단메뉴\n패밀리사이트",
-    status: "대기중",
+    status: "완료",
     note: "바로가기 링크 7개 배치, 갤러리 opacity 효과",
   },
   {
@@ -236,8 +236,8 @@ const initialTaskData = [
     slide: "좌↔우 (3초)",
     contents: "배너\n공지사항\n갤러리(2개)\n바로가기\n모달 팝업",
     footer: "로고(grayscale)\n카피라이트\n하단메뉴",
-    status: "대기중",
-    note: "중앙 공지/갤러리 상하 배치 복합 와이어프레임",
+    status: "완료",
+    note: "$(function() { let current = 0; setInterval(function() { if(current < 2) { current++; }else { current = 0; } $('.slide').animate({left : -current * 100 + '%'}, 500) }, 3000)});",
   },
   {
     no: 18,
