@@ -27,7 +27,8 @@ $(function() {
 $(function() {
     let $lastFocus;
 
-    $('.pop').on('click', function() {
+    $('.pop').on('click', function(e) {
+        e.preventDefault();
         $('.pop-wrap').show();
         $lasfFocus = $(this).focus();
         $('.inner').attr('tabindex', '-1').focus();
