@@ -250,7 +250,7 @@ const initialTaskData = [
     slide: "위↔아래 (3초)",
     contents: "공지사항\n갤러리(2개)\n바로가기\n모달 팝업",
     footer: "로고(grayscale)\n카피라이트\n패밀리사이트",
-    status: "대기중",
+    status: "완료",
     note: "로고 규격 190x45px 준수, 팝업 이미지 포함",
   },
   {
