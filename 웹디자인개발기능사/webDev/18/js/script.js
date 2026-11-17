@@ -32,7 +32,7 @@ $(function() {
     $('.pop').on('click', function(e) {
         e.preventDefault();
         $('.pop-wrap').show();
-        $lastFocus = $(this).focus();
+        $lastFocus = $(this) ;
         $('.inner').attr('tabindex', '-1').focus();
     })
     $('.close').on('click', function() {
