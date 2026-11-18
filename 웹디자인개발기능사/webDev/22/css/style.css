@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+* {margin:0; padding:0; box-sizing: border-box;}
+li {list-style: none;}
+a {display: block; color: inherit; text-decoration: none; cursor: pointer;}
+button {border: 0; background-color: transparent; cursor: pointer;}
+img {width: 100%; vertical-align: top; }
+body {background-color: #fff; color: #333;}
+
+.wrap {min-width: 1400px;}
+
+header {width: 1340px; height: 100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;}
+.logo {width: 190px; height: 45px;}
+nav {height: 100%; display: flex; align-items: flex-end; margin-right: 20px;}
+.menu {display: flex; align-items: center;}
+.menu > li {width:150px; position: relative;}
+.menu > li > a {padding: 10px 0; text-align: center; font-size: 20px; font-weight: 500;}
+.sub-menu > li:hover > a,
+.sub-menu > li > a:focus,
+.menu > li:hover > a,
+.menu > li > a:focus {background-color: #050757; color: #fff; font-weight: 700;}
+
+.sub-menu {display: none; position: absolute; top:100%; background-color: #9496e9;}
+.sub-menu > li {width: 150px;}
+.sub-menu > li > a {padding: 10px 0; text-align: center;}
+
+.slide-wrap {width: 100%; height: 350px; position: relative; overflow: hidden;}
+.slide {width: 100%; height: 100%;}
+.slide li {position: absolute; left:0; top:0; width: 100%; height: 350px;}
+.slide a {position: relative; width: 100%; height: 100%;}
+.slide img {height: 100%; object-fit: cover; }
+.slide span {position: absolute; top:50%; left:50%; transform: translate(-50%,-50%); padding: 10px 16px; font-size: 28px; font-weight: 500; color: #fff; background-color: #5c5c5c8c;}
+
+.contents {position: relative; width: 1340px; margin: 0 auto;}
+.link {position: absolute; top: -100px; left:0; height: 100px; width: 100%; background-color: #9496e9;}
+.link ul {display: flex; align-items: center; justify-content: space-around;}
+.link li {height: 100%; display: flex; align-items: center;}
+.link li a {display: flex; align-items: center; flex-direction: column; gap: 10px;}
+.link li a:hover,
+.link li a:focus {color: #b0b000; font-weight: 500;}
+.link li img {width: 60px; height: 60px;}
+
+.banner {width: 100%; height: 180px; display: flex; align-items: center; gap: 20px;}
+.banner .b-img {width: 320px; height: 160px; object-fit: cover;}
+.banner .tit {font-size: 20px; font-weight: 500; padding-bottom: 10px;}
+.banner .arr {width: 60px; height: 60px; margin-left: 40px;}
+
+.bord {width: 100%; height: 250px; display: flex; gap:20px;}
+.bord > div {width: 50%;}
+.bord h3 {font-size: 18px; width: 100px; text-align: center; padding: 10px 0; border: 1px solid #444; border-bottom: 0; background-color: #fff;}
+.bord > div ul {border-top: 1px solid #444; margin-top: -1px; padding: 10px;}
+
+.notice li a {padding: 10px 12px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #444;}
+.notice li:hover a,
+.notice li a:focus {background-color: #050757; color: #fff;}
+
+.gallery ul {display: flex; gap: 10px;}
+.gallery li {width: calc((100% - 20px) / 3); height: 160px;}
+.gallery a {width: 100%; height: 100%;}
+.gallery img {height: 100%; object-fit: cover;}
+
+footer {width: 1340px; height: 120px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; background-color: #5e5d5d; padding: 0 24px;}
+.copy {color: #fff;}
+.sns {display: flex; align-items: center; gap: 10px; justify-content: center;}
+.sns a { width: 30px; height: 30px;}
+select {padding: 10px; margin-top: 10px;}
+
+.pop-wrap {display: none; position: fixed; top:0; left:0; width: 100%; height: 100%; background-color: #33333393;}
+.inner {position: absolute; top:50%; left:50%; transform: translate(-50%,-50%); width: 400px; height: 350px; padding: 20px 34px 34px; background-color: #fff; border-radius: 20px;}
+h2 {padding-bottom: 10px; border-bottom: 1px solid #444; font-size: 18px;}
+.p-cont {padding: 10px 0;}
+.close {padding: 10px 16px; background-color: #9496e9; border-radius: 14px; position: absolute; bottom: 20px; right: 24px;}
+.close:hover,
+.close:focus {background-color: #050757; color: #fff; font-weight: 500;}

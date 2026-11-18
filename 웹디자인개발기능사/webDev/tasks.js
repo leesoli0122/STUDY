@@ -292,8 +292,8 @@ const initialTaskData = [
     slide: "Fade in/out (3초)",
     contents: "바로가기(아이콘+텍스트)\n배너\n공지+갤러리(탭)\n레이어팝업",
     footer: "로고(grayscale)\n카피라이트\n하단메뉴",
-    status: "대기중",
-    note: "컨테이너 너비 1340px, Text Color #666666",
+    status: "완료",
+    note: "tab js, fadeIn,fadeOut 위주로 볼 것",
   },
   {
     no: 22,
@@ -306,7 +306,7 @@ const initialTaskData = [
     slide: "Fade in/out (3초)",
     contents: "바로가기\n배너\n공지사항\n갤러리\n모달 팝업",
     footer: "카피라이트\nSNS\n패밀리사이트",
-    status: "대기중",
+    status: "완료",
     note: "Main Color #1b3b86 고정, 컨테이너 너비 1340px",
   },
   {
