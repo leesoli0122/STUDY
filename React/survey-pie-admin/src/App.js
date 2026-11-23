@@ -5,7 +5,7 @@ import ListPage from "./pages/ListPage";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{minWidth: '1400px'}}>
       <Routes>
         <Route path="/" element={<ListPage />} />
         <Route path="/list" element={<ListPage />} />

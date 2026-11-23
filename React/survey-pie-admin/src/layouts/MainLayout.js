@@ -5,9 +5,9 @@ const { Header, Content, Sider } = Layout;
 
 // const contentStyle = { padding: 45};
 
-function MainLayout({ selectedKeys, children}) {
+function MainLayout({ selectedKeys, children, padding = 45}) {
     const contentStyle = useMemo(() => {
-        return { padding: 45};
+        return { padding};
     }, [])
     return (
     <Layout style={{ minHeight: '100vh' }}>
