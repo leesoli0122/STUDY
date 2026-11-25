@@ -7,7 +7,8 @@ import Body from "../Body";
 import Card from "../Card";
 
 function PreviewSection() {
-  const questions = useSelector((state) => state.survey.data?.questions || []);
+  const EMPTY_ARRAY = [];
+  const questions = useSelector((state) => state.survey.data?.questions || EMPTY_ARRAY);
   const selectedQuestionId = useSelector((state) => state.selectedQuestionId.data)
   const dispatch = useDispatch();
 

@@ -1,26 +1,81 @@
-import { TruckOutlined } from "@ant-design/icons";
-import { Button, Form, Input } from "antd";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { Button, Form, Input, InputNumber, Switch } from "antd";
+import { Fragment, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+
+import { setQuestion } from "../../stores/survey/surveySlice";
 
 const {Item} = Form;
 
+const groups = [
+  {
+    title: '공통 옵션',
+    fields: [
+      {label:'질문', name:'title', rules:[{required:true}], type: 'text'},
+      {label:'설명', name:'desc', rules:[{required:true}], type: 'text'},
+      {label:'필수 여부', name:'required', rules:[], type: 'switch', valuePropName:'checked'},
+    ],
+  }
+]
+
+const detailFieldsMap = {
+  text: [
+    {label:'Placeholder', name:'placeholder', rules:[{required:false}], type: 'text'},
+    {label:'최대 입력 길이', name:'max', rules:[{required:false}], type: 'number'},
+  ],
+  textarea: [
+    {label:'Placeholder', name:'placeholder', rules:[{required:false}], type: 'text'},
+    {label:'최대 입력 길이', name:'max', rules:[{required:false}], type: 'number'},
+  ],
+  select: [
+    {label:'답변', name:'items', rules:[{required:true}], type: 'text'},
+    {label:'최대 선택 가능 개수', name:'max', rules:[{required:false}], type: 'number'},
+  ],
+}
+
+const getFieldInput = (type) => {
+  if(type === 'text') return <Input />;
+  else if (type === 'switch') return <Switch />;
+  else if (type === 'number') return <InputNumber />;
+
+  return null;
+}
+
 function OptionSection() {
   const [form] = Form.useForm();
+  const dispatch = useDispatch();
   const question = useSelector((state) =>
     state.selectedQuestionId.data === null
      ? null
      : state.survey.data.questions[state.selectedQuestionId.data],
   );
+  const selectedQuestionId = useSelector((state) => state.selectedQuestionId.data,);
   useEffect(() => {
     if(!question) return;
 
-    form.getFieldsValue({
+    const type = question.type;
+    const detailFieldsValue = {};
+    if(type === 'text' || type === 'textarea') {
+      detailFieldsValue.max = question.options.max;
+      detailFieldsValue.placeholder = question.options.placeholder;
+    }else if (type === 'select') {
+      detailFieldsValue.max = question.options.max;
+      detailFieldsValue.items = question.options.items.join(';');
+    }
+
+    form.setFieldsValue({
       title: question.title,
       desc: question.desc,
-    }, [form, question]);
-  })
+      required: question.required,
+      ...detailFieldsValue,
+    });
+  }, [form, question]);
+
+  const mergedGroups = question ? [...groups, {
+    title: '세부 옵션',
+    fields: detailFieldsMap[question.type],
+  }] : [];
+
   return (
     <OptionSectionWrapper>
       <Title>문항 옵션</Title>
@@ -31,24 +86,34 @@ function OptionSection() {
             name="option-form"
             layout={'vertical'}
           >
-            <SubTitle>공통 옵션</SubTitle>
-            <Item
-              label="질문"
-              name="title"
-              rules={[{ required: TruckOutlined}]}
-            >
-              <Input />
-            </Item>
-            <Item
-              label="설명"
-              name="desc"
-              rules={[{ required: TruckOutlined}]}
-            >
-              <Input />
-            </Item>
+            {mergedGroups.map((group, index) => (
+              <Fragment key={index}>
+                <SubTitle>{group.title}</SubTitle>
+                {group.fields.map((field, index) => (
+                  <Item key={index} {...field} >
+                    {getFieldInput(field.type)}
+                  </Item>
+              ))}
+              </Fragment>
+            ))}
             <Item>
-              <Button type="primary" onClick={() => {console.log(
-              )}}>적용</Button>
+              <Button type="primary" onClick={() => {
+                const {title, desc, required, ...options} = form.getFieldValue();
+                
+                const values = {
+                  title,
+                  desc,
+                  required,
+                  options,
+                  type: question.type,
+                }
+
+                if(values.type === 'select' && typeof values.options.items === 'string') {
+                  values.options.items = values.options.items.split(';');
+                }
+
+                dispatch(setQuestion({index: selectedQuestionId, data: values}),);
+              }}>적용</Button>
             </Item>
           </Form>
         ) : "질문을 선택해주세요"}
@@ -83,3 +148,13 @@ const FormWapper = styled.div`
 
 
 export default OptionSection;
+
+/*
+  {
+    title: '',
+    desc: '',
+    options: {
+      max: 0
+    }
+  }
+*/

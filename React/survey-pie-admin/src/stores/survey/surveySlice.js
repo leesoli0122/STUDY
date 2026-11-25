@@ -1,7 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  data: null,
+  data: {
+    title: '',
+    questions: [],
+  },
   loading: false,
   error: null,
 };
@@ -67,11 +70,23 @@ export const surveySlice = createSlice({
     },
     setError: (state, action) => {
       state.error = action.payload;
-    }
+    },
+    setQuestion: (state, action) => {
+      /*
+        action.payload = {
+          index:2,
+          data: {
+            ...
+          }
+        }
+      */
+      const index = action.payload.index;
+      state.data.questions[index] = action.payload.data;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setTitle, addQuestion, moveUpQuestion, moveDownQuestion, deleteQuestion, setSurvey, setLoading, setError } = surveySlice.actions
+export const { setTitle, addQuestion, moveUpQuestion, moveDownQuestion, deleteQuestion, setSurvey, setLoading, setError, setQuestion } = surveySlice.actions
 
 export default surveySlice.reducer

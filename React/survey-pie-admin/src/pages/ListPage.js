@@ -1,6 +1,7 @@
-import { Table } from "antd";
+import { Button, Table } from "antd";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import useSWR from "swr";
 
 import MainLayout from "../layouts/MainLayout";
@@ -55,6 +56,9 @@ function ListPage() {
     }
     return (
       <MainLayout selectedKeys={['list']}>
+        <CreateButtonWrapper>
+          <Button onClick={() => navigate('/builder')}>새로운 설문조사 생성</Button>
+        </CreateButtonWrapper>
         <Table
          onRow={(record, rowIndex) => {
             return {
@@ -78,5 +82,10 @@ function ListPage() {
       </MainLayout>
     );
 }
+
+const CreateButtonWrapper = styled.div`
+  text-align:right;
+  margin-bottom:25px;
+`;
 
 export default ListPage;

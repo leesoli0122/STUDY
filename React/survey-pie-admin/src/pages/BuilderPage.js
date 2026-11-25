@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import BuilderTitleInput from "../components/BuilderTitleInput";
+import FloatingButton from "../components/FloatingButton";
 import OptionSection from "../components/OptionSection";
 import PreviewSection from "../components/PreviewSection";
 import MainLayout from "../layouts/MainLayout";
@@ -16,7 +17,9 @@ function BuilderPage() {
   const params = useParams();
 
   useEffect(() => {
-    dispatch(fetchSurvey(params.surveyId));
+    if(params.surveyId) {
+      dispatch(fetchSurvey(params.surveyId));
+    }
   }, [dispatch, params.surveyId]);
   
   if(error) {
@@ -38,6 +41,7 @@ function BuilderPage() {
                 <OptionSection/>
             </Col>
         </Row>
+        <FloatingButton />
     </MainLayout>
     );
 }
