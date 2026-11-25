@@ -1,10 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  data: {
-    title: '',
-    questions: [],
-  },
+  data: null,
   loading: false,
   error: null,
 };
